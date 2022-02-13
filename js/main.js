@@ -7,6 +7,20 @@ canvas.height = 500;
 const img = new Image();
 img.src = 'img/olivia.png';
 
+const layout = {
+    title: 'Green color surface plot',
+    autosize: false,
+    width: 500,
+    height: 500,
+    margin: {
+        l: 65,
+        r: 50,
+        b: 65,
+        t: 90,
+    },
+    paper_bgcolor: '#f5f5f5'
+};
+
 let colorArray = [];
 
 img.addEventListener('load', () => {
@@ -22,13 +36,15 @@ img.addEventListener('load', () => {
     }
     let tmp = [];
     while(colorArray.length)
-        tmp.push(colorArray.splice(0, 286).reverse());
+        tmp.push(colorArray.splice(0, 286));
     colorArray = tmp;
     pixelScan.data = scannedData;
     ctx.putImageData(pixelScan, 0, 0);
-    console.log(scannedData.length/4);
-    console.log(colorArray);
-    const data = [{
+    createPlot();
+})
+
+function createPlot() {
+    const dataSurface = [{
         z: colorArray,
         colorscale: [
             ['0.0', 'rgb(0,0,0)'],
@@ -36,18 +52,16 @@ img.addEventListener('load', () => {
         ],
         type: 'surface'
     }];
-    const layout = {
-        title: 'Green color surface plot',
-        autosize: false,
-        width: 500,
-        height: 500,
-        margin: {
-            l: 65,
-            r: 50,
-            b: 65,
-            t: 90,
-        }
-    };
-    Plotly.newPlot('surfacePlot', data, layout);
-})
 
+    const dataHeatmap = [{
+        z: [...colorArray].reverse(),
+        colorscale: [
+            ['0.0', 'rgb(0,0,0)'],
+            ['1.0', 'rgb(0,255,0)']
+        ],
+        type: 'heatmap'
+    }];
+
+    Plotly.newPlot('heatmapPlot', dataHeatmap, {...layout, title: 'Green color plot', height: 700});
+    Plotly.newPlot('surfacePlot', dataSurface, layout);
+}
