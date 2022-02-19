@@ -60,6 +60,7 @@ body:not(:-moz-handler-blocked) fieldset {
     height: 0;
     position: absolute;
     left: -9999px;
+
 }
 .toggle input + label {
     margin: 0;
@@ -75,6 +76,7 @@ body:not(:-moz-handler-blocked) fieldset {
     text-align: center;
     box-shadow: 0 0 0 rgba(255, 255, 255, 0);
     transition: border-color 0.15s ease-out, color 0.25s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+    cursor: pointer;
 }
 .toggle input + label:first-of-type {
     border-radius: 6px 0 0 6px;
@@ -93,7 +95,7 @@ body:not(:-moz-handler-blocked) fieldset {
 .toggle input[id="blue"]:focus + label {
     background-color: #4b9dea;
     color: #fff;
-    box-shadow: 0 0 10px rgba(102, 179, 251, .5);
+    box-shadow: 0 0 10px rgba(102, 179, 251, 0.7);
     border-color: #4b9dea;
     z-index: 1;
 }
@@ -103,7 +105,7 @@ body:not(:-moz-handler-blocked) fieldset {
 .toggle input[id="green"]:focus + label {
     background-color: #50ea4b;
     color: #fff;
-    box-shadow: 0 0 10px rgba(117, 251, 102, 0.5);
+    box-shadow: 0 0 10px rgba(117, 251, 102, 0.7);
     border-color: #50ea4b;
     z-index: 1;
 }
@@ -113,41 +115,12 @@ body:not(:-moz-handler-blocked) fieldset {
 .toggle input[id="red"]:focus + label {
     background-color: #ea4b4b;
     color: #fff;
-    box-shadow: 0 0 10px rgba(251, 102, 102, 0.5);
+    box-shadow: 0 0 10px rgba(251, 102, 102, 0.7);
     border-color: #ea4b4b;
     z-index: 1;
 }
 
-/*@media (max-width: 800px) {*/
-/*    .toggle input + label {*/
-/*        padding: 0.75rem 0.25rem;*/
-/*        flex: 0 0 50%;*/
-/*        display: flex;*/
-/*        justify-content: center;*/
-/*        align-items: center;*/
-/*    }*/
-/*}*/
-/* STYLING FOR THE STATUS HELPER TEXT FOR THE DEMO */
-.status {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 400;
-}
-.status span {
-    font-weight: 600;
-    color: #b6985a;
-}
-.status span:first-of-type {
-    display: inline;
-}
-.status span:last-of-type {
-    display: none;
-}
-@media (max-width: 800px) {
-    .status span:first-of-type {
-        display: none;
-    }
-    .status span:last-of-type {
-        display: inline;
-    }
+.disabled input + label {
+    pointer-events:none;
+    opacity:0.5;
 }
