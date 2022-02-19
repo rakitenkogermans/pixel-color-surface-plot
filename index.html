@@ -23,14 +23,25 @@
 <body>
 
   <div class="container">
-    <div>
-      <canvas id="canvas"></canvas>
+
+    <div class="toggle">
+      <input type="radio" name="color" value="red" id="red"  />
+      <label for="red">Red</label>
+      <input type="radio" name="color" value="green" id="green" checked="checked"/>
+      <label for="green">Green</label>
+      <input type="radio" name="color" value="blue" id="blue" />
+      <label for="blue">Blue</label>
     </div>
-    <div>
-      <div id="heatmapPlot"></div>
-    </div>
-    <div>
-      <div id="surfacePlot"></div>
+    <div class="plot">
+      <div>
+        <canvas id="canvas"></canvas>
+      </div>
+      <div>
+        <div id="heatmapPlot"></div>
+      </div>
+      <div>
+        <div id="surfacePlot"></div>
+      </div>
     </div>
 
   </div>
