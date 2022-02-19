@@ -44,8 +44,11 @@ img.addEventListener('load', () => {
 
 function drawImg(color) {
     // btnsContainer.classList.add('disabled');
-    // Draw image on canvas
+
+    // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw image on canvas
     ctx.drawImage(img, 0, 0);
     // Get array data from starting coords and end coords
     const pixelScan = ctx.getImageData(0, 0, canvas.width, canvas.height);
